@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>revise</title>
+    <link href="../static/images/title.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/my.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+</head>
+<body class="container">
+<header>
+    <nav class="navbar navbar-inverse" role="navigation" style="background: #ffe9e2">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">zhouyang</a>
+            </div>
+            <div class="collapse navbar-collapse" id="my-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" >首页</a></li>
+                    <li><a href="#" >电影天地</a></li>
+                    <li><a href="#" >今日优惠</a></li>
+                    <li><a href="#" >购物车</a></li>
+                    <li><a href="#" >关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="content">
+    <div class="row">
+        <div class="col-md-3  content-left">
+            <p><code class="lead">王飞</code>，你好！<br/><br/>欢迎进入订餐系统管理后台</p>
+            <hr/>
+            <div class="backstage-info">
+                <ul class="list-unstyled user-list">
+                    <li><a href="backstage.html"><span class="glyphicon glyphicon-user"></span> 菜单信息添加</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单管理</a></li>
+                    <li><a href="revise.html"><span class="glyphicon glyphicon-user"></span> 菜品信息修改</a></li>
+                    <li><a href="discount.html"><span class="glyphicon glyphicon-user"></span> 折扣信息管理</a></li>
+                    <li><a href="user-search.html"><span class="glyphicon glyphicon-user"></span> 注册用户查询</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册用户分析</a></li>
+                    <li><a href="order-search.html"><span class="glyphicon glyphicon-user"></span> 用户订单查询</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单分析</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 系统信息维护</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 后台管理首页</a></li>
+                </ul>
+                <button type="button" class="btn btn-info">退出登录</button>
+            </div>
+
+        </div>
+        <div class="col-md-8 " >
+            <div class="page-header">
+                <lead class="h4">菜品信息管理 <span class="glyphicon glyphicon-hand-right"></span></lead>&nbsp;&nbsp;
+                <a href="#" >修改菜品信息</a>
+            </div>
+            <form class="form-horizontal register-form" role="form">
+                <div class="form-group ">
+                    <label for="FoodName" class="col-sm-2 control-label">菜品名称</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control " id="FoodName" value="麻婆豆腐" disabled>
+                        <span class="help-block">不能修改</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label" style="margin-top:5px;">菜品类型</label>
+                    <div class="radio col-md-6">
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio1" value="option1" name="optionsRadios"> 冷菜
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio2" value="option2" name="optionsRadios" checked> 主菜
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio3" value="option3" name="optionsRadios"> 靓汤
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio4" value="option4" name="optionsRadios"> 主食
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="FoodPrice" class="col-sm-2 control-label">菜品定价</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="FoodPrice" value="18.0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label" style="margin-top:5px;">菜品描述</label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" rows="6">十分好吃，十分好吃，十分好吃，十分好吃</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label" style="margin-top:5px;">推荐指数</label>
+                    <div class="radio col-md-8">
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio5" value="option5" name="optionsRadios2"> 暂不推荐
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio6" value="option6" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio7" value="option7" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio8" value="option8" name="optionsRadios2" checked> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio9" value="option9" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineradio10" value="option10" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">菜品照片名称</label>
+                    <div class="col-sm-6" style="margin-top:7px">
+                        <input type="file" name="pic"  />
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <div class="col-sm-offset-2 col-sm-10" style="margin-top:20px">
+                        <button type="submit" class="btn btn-primary">确认修改</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">菜品照片上传</label>
+                    <div class="col-sm-6" style="margin-top:7px">
+                        <input type="file" name="pic"  />
+                    </div>
+                </div>
+                <div class="media" >
+                    <div class="media-body media-middle media-photo">
+                        <strong class="media-heading">当前美食照片</strong>
+                    </div>
+                    <a href="#" class="media-right "><img src="images/下载.png" alt="麻婆豆腐" title="麻婆豆腐"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="text-center footer-info">
+        <h3>上海立信会计金融学院+信息管理与信息系统+周杨</h3>
+    </div>
+</footer>
+<script src="../static/js/jquery-3.1.0.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>

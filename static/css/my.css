@@ -1,0 +1,110 @@
+img{
+    width:50px;
+    height:50px;
+    border:0;
+}
+.main .main-content{
+    margin:30px 20px;
+    padding-bottom:30px;
+    border-bottom:1px dashed #ff176d;
+}
+.content-left{
+    margin:30px 15px 0;
+}
+.content-left form{
+    margin-top: 30px;
+}
+.content{
+    padding-bottom: 40px;
+    background: #daecff;
+    border-radius: 10px;
+}
+.footer-info{
+    background: #ffe4df;
+    height:80px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+hr{
+    border-color: #ee3636 !important;
+}
+.page-header{
+    border-bottom-color: #df6f07 !important;
+}
+.system-info dt{
+    padding:10px 0;
+}
+.system-info dd code{
+    color: #df6f07 !important;
+}
+.search-date{
+    width:150px !important;
+}
+.search-area{
+    width:75px !important;
+}
+#infoLogin{
+    margin:10px 0 0 87px;
+}
+#btnLogin{
+    margin-top:10px;
+}
+form>div{
+    margin:10px !important;
+}
+.login-info{
+    margin-bottom: 50px!important;
+    margin-top: 30px!important;
+}
+.login-info .badge{
+    background: #e98117 !important;
+}
+.login-info ul{
+    margin:20px 0;
+}
+.login-info ul li{
+    margin:10px 0;
+}
+.login-info .btn-login{
+    margin-left:40px;
+    margin-top:20px;
+}
+.address-table th{
+    text-align:center!important;
+}
+.register-form{
+    margin-top:60px;
+}
+.user-list li{
+    margin:20px
+}
+.user-list li span{
+    margin-right:10px
+}
+.user-list+button{
+    margin-left:20px
+}
+.media-photo{
+    padding-left:22px;
+}
+.mybadge{
+    background: #e98117;
+}
+.main-cart td{
+    vertical-align:middle !important;
+}
+.main-cart td a{
+    color: #69a5e6;
+    font-size:16px;
+}
+.main-cart td a:hover{
+    color: #e98117;
+    text-decoration:none;
+}
+#register .info{
+	position:relative;
+	top:7px;
+}

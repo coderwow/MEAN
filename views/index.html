@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+    <link href="../static/images/title.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/my.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+</head>
+<body class="container">
+<header>
+    <nav class="navbar navbar-inverse" role="navigation" style="background: #ffe9e2">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">zhouyang</a>
+            </div>
+            <div class="collapse navbar-collapse" id="my-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#" >首页</a></li>
+                    <li><a href="#" >电影天地</a></li>
+                    <li><a href="#" >今日优惠</a></li>
+                    <li><a href="#" >购物车</a></li>
+                    <li><a href="#" >关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="content" ng-app="app" ng-controller="movieCtrl">
+    <div class="row">
+        <div class="col-md-3  content-left">
+            <p><code class="lead"><%=username%></code>，你好！<br/><br/>欢迎进入订票系统</p>
+            <hr/>
+            <div class="login-info">
+                <ul>
+                    <li><a href="shopping-cart.html">购物车 <span class="badge" id="#cart">0</span></a></li>
+                    <li><a href="my-order.html">我的订单</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">我的首页</a></li>
+                    <li><a href="#">我的收藏</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">我的影评</a></li>
+                    <li><a href="#">注册信息管理</a></li>
+                </ul>
+                <a href="/logout" class="btn btn-info btn-login">退出登录</a>
+            </div>
+            <div class="well system-info">
+                <dl>
+                    <dt>系统信息</dt>
+                    <dd><em>功夫熊猫 <code> 正在热映...</code></em></dd>
+                </dl>
+                <dl>
+                    <dt>最新注册</dt>
+                    <dd>2016-3-12 12:09:12 <code>kevin</code></dd>
+                    <dd>2016-3-12 12:09:12 <code>kevin</code></dd>
+                </dl>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">会员优惠</h3>
+                </div>
+                <div class="panel-body">
+                    <p>充<code>500</code>元，<code>80</code>折</p>
+                    <p>充<code>300</code>元，<code>85</code>折</p>
+                    <p>充<code>200</code>元，<code>90</code>折</p>
+                    <p>充<code>100</code>元，<code>95</code>折</p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">订票流程</h3>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li>在线选座 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 加入购物车</li>
+                        <li>查看购物车 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 下单</li>
+                        <li>确认订单 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 完成</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 ">
+            <div class="page-header">
+                <form role="form" class="form-inline" method='POST' action="">
+                    <div class="form-group ">
+                        国家：
+                        <select class="form-control search-area" id="moviearea" name="moviearea">
+                            <option></option>
+                            <option>中国</option>
+                            <option>美国</option>
+                            <option>法国</option>
+                            <option>日本</option>
+                            <option>其它</option>
+                        </select>
+                        <!--<input type="text" class="form-control search-area" id="moviearea" name="moviearea">-->
+                    </div>
+                    <div class="form-group">
+                        上映日期：
+                        <input type="date" class="form-control  search-date" name="moviedate" id="moviedate">
+                    </div>
+                    <div class="radio">
+                        类型：
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineRadio1" value="科幻" name="movietype"> 科幻
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineRadio2" value="爱情" name="movietype"> 爱情
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineRadio3" value="动作" name="movietype"> 动作
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" id="inlineRadio4" value="战争" name="movietype"> 战争
+                        </label>
+                    </div>
+                    <button class="btn-warning btn" type="button" id="btnSearch" ng-click="btnSearch()">搜索</button>
+                </form>
+            </div>
+            <div class="main">
+                <button class="btn btn-info" type="button">
+                    搜索结果 <span class="badge" ng-bind="num"></span>
+                </button>
+                <a class="btn btn-default pull-right" href="/login">
+                    清除搜索条件
+                </a>
+                <div class="row main-content" ng-repeat="movie in movies">
+                    <div class="col-md-6">
+                        <div class="media">
+                            <a class="media-left media-middle" href="#">
+                                <img src="./static/images/films/{{movie.moviePic}}" alt="..." class='img img-rounded' style='border:1px solid red;padding:2px;box-shadow:2px 2px #ccc;'>
+                            </a>
+                            <div class="media-body ">
+                                <h4 class="media-heading" ng-bind="movie.movieName"></h4>
+                                <em ng-bind="movie.movieInfo"></em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p>【价格】<kbd ng-bind="movie.moviePrice |currency:'￥'"></kbd> 元 / 人</p>
+                    </div>
+                    <div class="col-md-2">
+                        <ul class="list-unstyled">
+                            <li><a href="#">收藏</a></li>
+                            <li><a href="#" class="cart1" ng-click="addCart()">加入购物车</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="page text-center" ng-show="isShow">
+                <nav>
+                    <ul class="pagination">
+                        <li ng-repeat="page in pages"  ng-click="showActive($event)" ng-class="{'active':$index == currentPage}"><a href="javascript:void(0);" ng-bind="page" ></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="text-center footer-info">
+        <h3>上海立信会计金融学院+信息管理与信息系统+周杨</h3>
+    </div>
+</footer>
+<script src="../static/js/jquery-3.1.0.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/angular.js"></script>
+<script>
+    angular.module('app',[])
+            .controller('movieCtrl',function($scope,$http){
+                $scope.isShow=true;
+                $scope.currentPage=0;
+                //默认请求第一页数据
+                getData(1);
+                getPages();
+                //Ajax请求数据
+                function getData(page) {
+                    //真实page是从0开始算的
+                    $http.get("/show?page=" + (page - 1)).success(function(result){
+                        //这里接收是result，但是这个json里面有一个key叫做result
+                        $scope.movies=result.result;
+                    });
+                }
+                function getPages(){
+                    $http.get('/pages').success(function(result){
+                        var allPages=[];
+                        for(var i=0;i<parseInt(result.pageamount);i++){
+                            allPages.push(i+1);
+                        }
+                        $scope.num=result.count;
+                        $scope.pages=allPages;
+                    });
+                }
+                $scope.show=function(){
+                    getData(1);
+                    getPages();
+                }
+                $scope.showActive=function(e){
+                    //更改当前页码
+                    $scope.currentPage=this.$index
+                    getData(this.page);
+                };
+                $scope.btnSearch=function(){
+                    $http.post('/movieSearch',
+                            {
+                                moviearea:$('#moviearea').val(),
+                                moviedate:$('#moviedate').val(),
+                                movietype:$('input:radio[name="movietype"]:checked').val()
+                            }).success(function(res){
+                        $scope.isShow=false;
+                        $scope.num=res.result.length;
+                        $scope.movies=res.result;
+                    });
+                };
+                $scope.addCart=function(){
+                    var cart=document.getElementById('cart')
+
+                }
+            })
+</script>
+<script>
+    $(function(){
+        $('#btnLogin').click(function(){
+            $.post("/login",
+                    {
+                        tel:$('#tel').val(),
+                        password:$('#password').val()
+                    },
+                    function(data){
+                        if(data==='1'){
+                            window.location.href='/';
+                        }else if(data==='-2'){
+                            $('#infoLogin').html('用户名不存在 ！').fadeIn();
+                            $('#tel').focus();
+                        }else if(data==='-1'){
+                            $('#infoLogin').html('密码错误 ！').fadeIn();
+                            $('#password').focus();
+                        }else{
+
+                        }
+                    });
+        })
+    });
+</script>
+</body>
+</html>
