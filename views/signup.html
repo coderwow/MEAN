@@ -21,14 +21,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:void(0)">zhouyang</a>
+                <a class="navbar-brand" href="javascript:void(0)">酷影网</a>
             </div>
             <div class="collapse navbar-collapse" id="my-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" >首页</a></li>
+                    <li><a href="/" >首页</a></li>
                     <li><a href="#" >电影天地</a></li>
                     <li><a href="#" >今日优惠</a></li>
-                    <li><a href="#" >购物车</a></li>
+                    <li><a href="/shoppingCart" >购物车</a></li>
                     <li><a href="#" >关于我们</a></li>
                 </ul>
             </div>
@@ -147,7 +147,7 @@
 
 <footer>
     <div class="text-center footer-info">
-        <h3>上海立信会计金融学院+信息管理与信息系统+周杨</h3>
+        <h3>Write the Code，Change the World</h3>
     </div>
 </footer>
 <script src="../static/js/angular.js"></script>
@@ -163,8 +163,8 @@
                         $(this).parent().parent().addClass('has-success');
                     }
                 });
-                $('#inputPassword4').blur(function(){
-                    if($('#inputPassword4').val()!==$('#inputPassword3').val()){
+                $('#inputPassword2').blur(function(){
+                    if($('#inputPassword2').val()!==$('#inputPassword1').val()){
                         $('#again').fadeIn();
                         $('#inputPassword2').focus();
                     }else{

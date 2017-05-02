@@ -3,6 +3,11 @@ img{
     height:50px;
     border:0;
 }
+blockquote {
+    border-left-color: #ff71ad;
+    text-align: left;
+    margin:10px;
+}
 .main .main-content{
     margin:30px 20px;
     padding-bottom:30px;
@@ -107,4 +112,28 @@ form>div{
 #register .info{
 	position:relative;
 	top:7px;
+}
+
+.main {
+    margin-top:50px;
+}
+
+.orderPic {
+    width:72px;
+    height:80px;
+    border:0;
+}
+.productNum {
+    padding:4px 8px;
+    background:#ff176d;
+}
+.table>tbody>tr.success>td{
+    background: #e9f533;
+}
+.panel-success>.panel-heading{
+    background-color:#ff176d;
+    color:#fff;
+}
+.comment-panel {
+    margin-top:20px;
 }

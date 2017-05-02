@@ -3,7 +3,9 @@
  */
 var crypto=require('crypto');
 var mongoose=require('mongoose');
+require('../models/admins_model')
 var User=mongoose.model('User');
+var Admin=mongoose.model('Admin');
 function md5(pwd){
     return crypto.createHash('md5').update(pwd).digest('base64').toString();
 }
@@ -19,8 +21,22 @@ exports.signup=function(req,res) {
         } else {
             req.session.user = user.id;
             req.session.username = user.username;
+            req.session.tel = user.tel;
             req.session.msg = '欢迎你 ，' + user.username;
             res.redirect('/');
+        }
+    })
+};
+exports.adminSignUp=function(req,res) {
+    var admin = new Admin({adminname: req.body.adminname});
+    admin.set('hashed_password', md5(md5(req.body.password).substr(4, 7) + md5(req.body.password)));
+    admin.save(function (err) {
+        if (err) {
+            req.session.error = err;
+            res.json('-1');
+        } else {
+            req.session.adminname = admin.adminname;
+            res.json('1');
         }
     })
 };
@@ -33,6 +49,7 @@ exports.login=function(req,res){
             }else if(user.hashed_password===md5(md5(req.body.password).substr(4, 7) + md5(req.body.password))){
                 // 重新生成一个新的session
                 req.session.regenerate(function(){
+                    req.session.tel=user.tel;
                     req.session.user=user.id;
                     req.session.username=user.username;
                     res.send('1')
@@ -44,6 +61,28 @@ exports.login=function(req,res){
                 req.session.regenerate(function(){
                     req.session.msg=err;
                     res.redirect('./login');
+                });
+            }
+        });
+};
+exports.adminLogin=function(req,res){
+    Admin.findOne({adminname:req.body.adminname})
+        .exec(function(err,user){
+            //用户不存在
+            if(!user){
+                res.json('-2');
+            }else if(user.hashed_password===md5(md5(req.body.password).substr(4, 7) + md5(req.body.password))){
+                // 重新生成一个新的session
+                req.session.regenerate(function(){
+                    req.session.adminname=user.adminname;
+                    res.json('1');
+                });
+            }else{
+                res.json('-1');
+            }
+            if(err){
+                req.session.regenerate(function(){
+                    req.session.msg=err;
                 });
             }
         });

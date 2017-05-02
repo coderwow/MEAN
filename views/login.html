@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>index</title>
+    <title>尚未登录</title>
     <link href="../static/images/title.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/my.css">
@@ -21,14 +21,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:void(0)">zhouyang</a>
+                <a class="navbar-brand" href="javascript:void(0)">酷影网</a>
             </div>
             <div class="collapse navbar-collapse" id="my-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" >首页</a></li>
+                    <li><a href="/" >首页</a></li>
                     <li><a href="#" >电影天地</a></li>
                     <li><a href="#" >今日优惠</a></li>
-                    <li><a href="#" >购物车</a></li>
+                    <li><a href="/shoppingCart" >购物车</a></li>
                     <li><a href="#" >关于我们</a></li>
                 </ul>
             </div>
@@ -43,13 +43,13 @@
                 <div class="form-group form-group-sm">
                     <label class="control-label col-md-3  col-xs-3" for="tel">手机</label>
                     <div class="col-md-8 col-xs-6">
-                        <input id="tel" type="text" class="form-control" placeholder="phone" name='tel'/>
+                        <input id="tel" type="text" class="form-control" placeholder="phone" name='tel' autocomplete="off" />
                     </div>
                 </div>
                 <div class="form-group form-group-sm">
                     <label class="control-label col-md-3 col-xs-3" for="password">密码</label>
                     <div class="col-md-8 col-xs-6">
-                        <input id="password" type="password" class="form-control" placeholder="password" name="password" />
+                        <input id="password" type="password" class="form-control" placeholder="password" name="password" autocomplete="off" />
                     </div>
                 </div>
                 <p id="infoLogin" class="text-danger"></p>
@@ -153,8 +153,8 @@
                     </div>
                     <div class="col-md-2">
                         <ul class="list-unstyled">
-                            <li><a href="#">收藏</a></li>
-                            <li><a href="#" class="cart1" ng-click="addCart()">加入购物车</a></li>
+                            <li><a href="/commentsShow/{{movie.movieName}}" class="comments">查看影评</a></li>
+                            <li><a href="/add-to-cart/{{movie._id}}" class="cart1" ng-click="addCart()">加入购物车</a></li>
                         </ul>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
 
 <footer>
     <div class="text-center footer-info">
-        <h3>上海立信会计金融学院+信息管理与信息系统+周杨</h3>
+        <h3>Write the Code，Change the World</h3>
     </div>
 </footer>
 <script src="../static/js/jquery-3.1.0.min.js"></script>

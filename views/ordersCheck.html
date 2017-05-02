@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>订单处理</title>
+    <link href="../static/images/title.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/my.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+</head>
+<body class="container">
+<header>
+    <nav class="navbar navbar-inverse" role="navigation" style="background: #ffe9e2">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">酷影网</a>
+            </div>
+            <div class="collapse navbar-collapse" id="my-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/backstage" >首页</a></li>
+                    <li><a href="#" >电影天地</a></li>
+                    <li><a href="#" >今日优惠</a></li>
+                    <li><a href="#" >关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="content">
+    <div class="row">
+        <div class="col-md-3  content-left">
+            <p><code class="lead"><%=adminname%></code>，你好！<br/><br/>欢迎进入影院系统管理后台</p>
+            <hr/>
+            <div class="backstage-info">
+                <ul class="list-unstyled user-list">
+                    <li><a href="/backstage"><span class="glyphicon glyphicon-user"></span> 后台管理首页</a></li>
+                    <li><a href="/movieAdd"><span class="glyphicon glyphicon-user"></span> 上映影片添加</a></li>
+                    <li><a href="/ordersCheck"><span class="glyphicon glyphicon-user"></span> 用户订单管理</a></li>
+                    <li><a href="/commentsCheck"><span class="glyphicon glyphicon-user"></span> 影评信息管理</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 折扣信息管理</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册用户分析</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单查询</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单分析</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 系统信息维护</a></li>
+                </ul>
+                <a href="/adminLoginout" class="btn btn-info">退出登录</a>
+            </div>
+
+        </div>
+        <div class="col-md-8 " ng-app="backstage" ng-controller="orderCtrl">
+            <div class="page-header">
+                <lead class="h4">用户订单管理 <span class="glyphicon glyphicon-hand-right"></span></lead>&nbsp;&nbsp;
+                <a href="#" >订单详情</a>
+            </div>
+            <div ng-view></div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="text-center footer-info">
+        <h3>Write the Code，Change the World</h3>
+    </div>
+</footer>
+<script src="../static/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="../static/js/angular.js"></script>
+<script src="../static/js/angular-route.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script>
+    angular.module('backstage',['ngRoute'])
+            .config(function($routeProvider){
+                $routeProvider
+                        .when('/',{
+                            template:"\
+                                    <table class='table table-bordered text-center address-table' style='margin-top:40px;'>\
+                                                <thead>\
+                                                <tr >\
+                                                <th>订单号</th>\
+                                                <th>订单客户</th>\
+                                                <th>下单时间</th>\
+                                    <th>金额</th>\
+                                    <th>操作</th>\
+                                    </tr>\
+                                    </thead>\
+                                    <tbody >\
+                                        <tr class='main-cart' ng-repeat='orderNot in ordersNot.slice().reverse()' >\
+                                         <td class='text-left' style='padding-left:30px;'>\
+                                            {{orderNot._id}}\
+                                            </td>\
+                                            <td><kbd>{{orderNot.orderPerson}}</kbd> <em>{{orderNot.orderTel}}</em></td>\
+                                            <td ng-bind='orderNot.orderDate'></td>\
+                                            <td>{{orderNot.orderPrice |currency:'￥'}}</td>\
+                                            <td><a href='/orderDone/{{orderNot._id}}' class='btn btn-default'>确认下单</a></td>\
+                                        </tr>\
+                                        <tr class='main-cart' ng-repeat='orderOk in ordersOk.slice().reverse()' >\
+                                         <td class='text-left' style='padding-left:30px;'>\
+                                            {{orderOk._id}}\
+                                            </td>\
+                                            <td><kbd>{{orderOk.orderPerson}}</kbd> <em>{{orderOk.orderTel}}</em></td>\
+                                            <td ng-bind='orderOk.orderDate'></td>\
+                                            <td>{{orderOk.orderPrice |currency:'￥'}}</td>\
+                                            <td><button class='btn btn-success'>{{orderOk.orderStatus}}</button></td>\
+                                        </tr>\
+                                    </tbody>\
+                                     </table>"
+                        })
+            })
+            .controller('orderCtrl',function($scope,$http){
+                $scope.discount=95;
+                $http.get('/ordersDataNot').success(function(result){
+                    $scope.ordersNot=result.result;
+                });
+                $http.get('/ordersDataOk').success(function(result){
+                    $scope.ordersOk=result.result;
+                });
+                $scope.discount=95;
+            })
+
+
+</script>
+</body>
+</html>

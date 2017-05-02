@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>revise</title>
+    <title>影片修改</title>
     <link href="../static/images/title.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/css/my.css">
@@ -21,14 +21,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="javascript:void(0)">zhouyang</a>
+                <a class="navbar-brand" href="javascript:void(0)">酷影网</a>
             </div>
             <div class="collapse navbar-collapse" id="my-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#" >首页</a></li>
+                    <li><a href="/admin" >首页</a></li>
                     <li><a href="#" >电影天地</a></li>
                     <li><a href="#" >今日优惠</a></li>
-                    <li><a href="#" >购物车</a></li>
                     <li><a href="#" >关于我们</a></li>
                 </ul>
             </div>
@@ -38,94 +37,112 @@
 <div class="content">
     <div class="row">
         <div class="col-md-3  content-left">
-            <p><code class="lead">王飞</code>，你好！<br/><br/>欢迎进入订餐系统管理后台</p>
+            <p><code class="lead"><%=adminname%></code>，你好！<br/><br/>欢迎进入影院系统管理后台</p>
             <hr/>
             <div class="backstage-info">
                 <ul class="list-unstyled user-list">
-                    <li><a href="backstage.html"><span class="glyphicon glyphicon-user"></span> 菜单信息添加</a></li>
+                    <li><a href="/backstage"><span class="glyphicon glyphicon-user"></span> 后台管理首页</a></li>
+                    <li><a href="/movieAdd"><span class="glyphicon glyphicon-user"></span> 上映影片添加</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单管理</a></li>
-                    <li><a href="revise.html"><span class="glyphicon glyphicon-user"></span> 菜品信息修改</a></li>
-                    <li><a href="discount.html"><span class="glyphicon glyphicon-user"></span> 折扣信息管理</a></li>
-                    <li><a href="user-search.html"><span class="glyphicon glyphicon-user"></span> 注册用户查询</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 折扣信息管理</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册用户查询</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> 注册用户分析</a></li>
-                    <li><a href="order-search.html"><span class="glyphicon glyphicon-user"></span> 用户订单查询</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单查询</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> 用户订单分析</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> 系统信息维护</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> 后台管理首页</a></li>
                 </ul>
-                <button type="button" class="btn btn-info">退出登录</button>
+                <a href="/adminLoginout" class="btn btn-info">退出登录</a>
             </div>
 
         </div>
         <div class="col-md-8 " >
             <div class="page-header">
-                <lead class="h4">菜品信息管理 <span class="glyphicon glyphicon-hand-right"></span></lead>&nbsp;&nbsp;
-                <a href="#" >修改菜品信息</a>
+                <lead class="h4">影片信息管理 <span class="glyphicon glyphicon-hand-right"></span></lead>&nbsp;&nbsp;
+                <a href="#" >影片修改</a>
             </div>
-            <form class="form-horizontal register-form" role="form">
-                <div class="form-group ">
-                    <label for="FoodName" class="col-sm-2 control-label">菜品名称</label>
+            <form class="form-horizontal register-form" role="form" method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="MovieName" class="col-sm-2 control-label">影片名称</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control " id="FoodName" value="麻婆豆腐" disabled>
-                        <span class="help-block">不能修改</span>
+                        <input type="hidden" class="form-control" id="MovieName" name="mname" value="<%=movieName%>">
+                        <input type="text" class="form-control" value="<%=movieName%>" disabled>
+                        <span class="help-block">添加后不能修改</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label" style="margin-top:5px;">菜品类型</label>
+                    <label  class="col-sm-2 control-label" style="margin-top:5px;">影片类型</label>
                     <div class="radio col-md-6">
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio1" value="option1" name="optionsRadios"> 冷菜
+                            <input type="radio" id="inlineradio1" value="科幻" name="mtype"> 科幻
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio2" value="option2" name="optionsRadios" checked> 主菜
+                            <input type="radio" id="inlineradio2" value="爱情" name="mtype"> 爱情
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio3" value="option3" name="optionsRadios"> 靓汤
+                            <input type="radio" id="inlineradio3" value="动作" name="mtype"> 动作
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio4" value="option4" name="optionsRadios"> 主食
+                            <input type="radio" id="inlineradio4" value="战争" name="mtype"> 战争
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="FoodPrice" class="col-sm-2 control-label">菜品定价</label>
+                    <label for="MoviePrice" class="col-sm-2 control-label">影片价格</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="FoodPrice" value="18.0">
+                        <input type="text" class="form-control" id="MoviePrice" placeholder="￥ ： 0.0" name="mprice">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label" style="margin-top:5px;">菜品描述</label>
+                    <label for="MovieDate" class="col-sm-2 control-label">上映日期</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" id="MovieDate"  name="mdate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="MovieArea" class="col-sm-2 control-label">国家/地区</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="MovieArea" name="marea">
+                            <option>中国</option>
+                            <option>美国</option>
+                            <option>法国</option>
+                            <option>日本</option>
+                            <option>其它</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label" style="margin-top:5px;">影片描述</label>
                     <div class="col-md-6">
-                        <textarea class="form-control" rows="6">十分好吃，十分好吃，十分好吃，十分好吃</textarea>
+                        <textarea class="form-control" rows="4" name="minfo"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label  class="col-sm-2 control-label" style="margin-top:5px;">推荐指数</label>
                     <div class="radio col-md-8">
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio5" value="option5" name="optionsRadios2"> 暂不推荐
+                            <input type="radio" id="inlineradio5" value="0" name="mstar"> 暂不推荐
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio6" value="option6" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span>
+                            <input type="radio" id="inlineradio6" value="1" name="mstar"> <span class="glyphicon glyphicon-star"></span>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio7" value="option7" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                            <input type="radio" id="inlineradio7" value="2" name="mstar"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio8" value="option8" name="optionsRadios2" checked> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                            <input type="radio" id="inlineradio8" value="3" name="mstar"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio9" value="option9" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                            <input type="radio" id="inlineradio9" value="4" name="mstar"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" id="inlineradio10" value="option10" name="optionsRadios2"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                            <input type="radio" id="inlineradio10" value="5" name="mstar"> <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">菜品照片名称</label>
+                    <label  class="col-sm-2 control-label">影片海报</label>
                     <div class="col-sm-6" style="margin-top:7px">
-                        <input type="file" name="pic"  />
+                        <input type="file" name="mpic"  />
                     </div>
                 </div>
                 <div class="form-group" >
@@ -133,17 +150,11 @@
                         <button type="submit" class="btn btn-primary">确认修改</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label  class="col-sm-2 control-label">菜品照片上传</label>
-                    <div class="col-sm-6" style="margin-top:7px">
-                        <input type="file" name="pic"  />
-                    </div>
-                </div>
                 <div class="media" >
                     <div class="media-body media-middle media-photo">
-                        <strong class="media-heading">当前美食照片</strong>
+                        <strong class="media-heading">当前影片海报</strong>
                     </div>
-                    <a href="#" class="media-right "><img src="images/下载.png" alt="麻婆豆腐" title="麻婆豆腐"></a>
+                    <a href="#" class="media-right "><img src="../static/images/films/<%=movieName%>.jpg" alt="<%=movieName%>" title="<%=movieName%>" class="img img-rounded"></a>
                 </div>
             </form>
         </div>
@@ -152,7 +163,7 @@
 
 <footer>
     <div class="text-center footer-info">
-        <h3>上海立信会计金融学院+信息管理与信息系统+周杨</h3>
+        <h3>Write the Code，Change the World</h3>
     </div>
 </footer>
 <script src="../static/js/jquery-3.1.0.min.js"></script>

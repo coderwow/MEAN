@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+body {
+    font-family: 宋体;
+    font-size: 12px;
+    line-height: 20px;
+}
+#box {
+    width: 966px;
+    height: 100%;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+}
+#top{
+    width: 800px;
+    height: 84px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#top01{
+    width:800px;
+    height:80px;
+    padding-top:21px;
+    padding-bottom:0px;
+    background-image:url(../../static/images/admin/b3.gif);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+#bottom{
+    width: 800px;
+    height: 100%;
+    overflow: hidden;
+    border: 2px solid #720bb6;
+    margin-right: auto;
+    margin-left: auto;
+}
+#top02{
+    width:760px;
+    height:17px;
+    margin:21px 22px 15px 22px;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+#bottom01{
+    width: 680px;
+    height: 250px;
+    font-size: 12px;
+    color: #757575;
+    background-image: url(../../static/images/admin/b4.gif);
+    background-repeat: no-repeat;
+    margin-left: 31.5px;
+    margin-right: 31.5px;
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-left: 30px;
+}
+#adminname{
+    width:230px;
+    height:16px;
+    line-height:16px;
+    border:1px solid #E5E5E5;
+    margin-top:15px;
+    margin-left:42px;
+    margin-bottom:6px;
+}
+.font01{
+    color:#F00;
+}
+#password,#Mobile{
+    width:230px;
+    height:16px;
+    line-height:16px;
+    border:1px solid #E5E5E5;
+    margin-top:6px;
+    margin-left:42px;
+    margin-bottom:6px;
+}
+#password01,#Id{
+    width:230px;
+    height:16px;
+    line-height:16px;
+    border:1px solid #E5E5E5;
+    margin-top:6px;
+    margin-left:30px;
+    margin-bottom:6px;
+}
+#button{
+    width: 244px;
+    height: 36px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 10px;
+    padding-top: 12px;
+    padding-right: 18px;
+    padding-bottom: 10px;
+    padding-left: 18px;
+}
+#top03{
+    width:959px;
+    height:20px;
+    background-color:#F4F4F4;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:#757575;
+    text-align: center;
+}
+

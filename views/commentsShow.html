@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>影评详情</title>
+    <link href="../static/images/title.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/my.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+</head>
+<body class="container">
+<header>
+    <nav class="navbar navbar-inverse" role="navigation" style="background: #ffe9e2">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">酷影网</a>
+            </div>
+            <div class="collapse navbar-collapse" id="my-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" >首页</a></li>
+                    <li><a href="#" >电影天地</a></li>
+                    <li><a href="#" >今日优惠</a></li>
+                    <li><a href="/shoppingCart" >购物车</a></li>
+                    <li><a href="#" >关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="content" ng-app="app">
+    <div class="row">
+        <div class="col-md-3  content-left">
+            <p><code class="lead"><%=username%></code>，你好！<br/><br/>欢迎进入订票系统</p>
+            <hr/>
+            <div class="login-info">
+                <ul>
+                    <li><a href="/shoppingCart">购物车 <span class="badge" id="#cart">0</span></a></li>
+                    <li><a href="/orderDetail">我的订单</a></li>
+                </ul>
+                <ul>
+                    <li><a href="/">我的首页</a></li>
+                    <li><a href="/myComments">我的影评</a></li>
+                </ul>
+                <a href="/logout" class="btn btn-info btn-login">退出登录</a>
+            </div>
+            <div class="well system-info">
+                <dl>
+                    <dt>系统信息</dt>
+                    <dd><em>功夫熊猫 <code> 正在热映...</code></em></dd>
+                </dl>
+                <dl>
+                    <dt>最新注册</dt>
+                    <dd>2016-3-12 12:09:12 <code>kevin</code></dd>
+                    <dd>2016-3-12 12:09:12 <code>kevin</code></dd>
+                </dl>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">会员优惠</h3>
+                </div>
+                <div class="panel-body">
+                    <p>充<code>500</code>元，<code>80</code>折</p>
+                    <p>充<code>300</code>元，<code>85</code>折</p>
+                    <p>充<code>200</code>元，<code>90</code>折</p>
+                    <p>充<code>100</code>元，<code>95</code>折</p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">订票流程</h3>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li>在线选座 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 加入购物车</li>
+                        <li>查看购物车 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 下单</li>
+                        <li>确认订单 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 完成</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 ">
+            <div class="page-header">
+                <lead class="h4">热映影片 <span class="glyphicon glyphicon-hand-right"></span></lead>&nbsp;&nbsp;
+                <a href="#" >查看影评</a>
+            </div>
+            <div class="main">
+                <div class="row main-content">
+                    <div class="col-md-6">
+                        <div class="media">
+                            <a class="media-left media-middle" href="#">
+                                <img src="../static/images/films/<%=commentProduct.moviePic%>" alt="..." class='img img-rounded' style='border:1px solid red;padding:2px;box-shadow:2px 2px #ccc;'>
+                            </a>
+                            <div class="media-body ">
+                                <h4 class="media-heading"><%=commentProduct.movieName%></h4>
+                                <em><%=commentProduct.movieInfo%></em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p><kbd>影片类型 --<%=commentProduct.movieType%></kbd></p>
+                    </div>
+                </div>
+                <div class="row" ng-controller="myCtrl">
+                    <a class="btn btn-warning" href="/commentAdd/<%=commentProduct.movieName%>">我要评论</a>
+                    <div class="panel panel-primary comment-panel" >
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">影评详情</div>
+
+                        <!-- List group -->
+                        <ul class="list-group" id="box">
+                            <li class="list-group-item list" ng-repeat="item in items.slice().reverse()" >
+                                <h4 ng-bind="item.commentAuthor"></h4>
+                                <p ng-bind="item.commentInfo"></p>
+                                <em ng-bind="item.commentDate |date:'yyyy年MM月dd日HH时mm分ss秒'"></em>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="text-center footer-info">
+        <h3>Write the Code，Change the World</h3>
+    </div>
+</footer>
+<script src="../static/js/jquery-3.1.0.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script src="../static/js/angular.js"></script>
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            $.post("/commentAddData",
+                    {
+                        commentMovie:$('#commentMovie').val(),
+                        commentAuthor:$('#commentAuthor').val(),
+                        commentInfo:$('#commentInfo').val()
+                    },
+                    function(data){
+                        if(data='1'){
+                            $('#info').html('发布成功 ！')
+                        }else{
+                            $('#info').html('');
+                        }
+                    });
+        });
+    })
+</script>
+<script>
+    angular.module('app',[])
+            .controller('myCtrl',function($scope,$http){
+                $http.post('/commentsShow/<%=commentProduct.movieName%>').success(function(result){
+                    $scope.items=result;
+                    $scope.totalPrice=result.totalPrice;
+                });
+            })
+</script>
+</body>
+</html>

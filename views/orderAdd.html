@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>确认订单</title>
+    <link href="images/title.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/my.css">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+</head>
+<body class="container" ng-app="myapp">
+<header>
+    <nav class="navbar navbar-inverse" role="navigation" style="background: #ffe9e2">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">酷影网</a>
+            </div>
+            <div class="collapse navbar-collapse" id="my-navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" >首页</a></li>
+                    <li><a href="#" >电影天地</a></li>
+                    <li><a href="#" >今日优惠</a></li>
+                    <li><a href="/shoppingCart" >购物车</a></li>
+                    <li><a href="#" >关于我们</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="content">
+    <div class="row">
+        <div class="col-md-3  content-left">
+            <p><code class="lead"><%=username%></code>，你好！<br/><br/>欢迎进入订票系统</p>
+            <hr/>
+            <div class="login-info">
+                <ul>
+                    <li><a href="/shoppingCart">购物车 <span class="badge" id="#cart"><%=num%></span></a></li>
+                    <li><a href="/orderDetail">我的订单</a></li>
+                </ul>
+                <ul>
+                    <li><a href="/">我的首页</a></li>
+                    <li><a href="/myComments">我的影评</a></li>
+                </ul>
+                <a href="/logout" class="btn btn-info btn-login">退出登录</a>
+            </div>
+            <div class="well system-info">
+                <dl>
+                    <dt>系统信息</dt>
+                    <dd><em>功夫熊猫 <code> 正在热映...</code></em></dd>
+                </dl>
+                <dl>
+                    <dt>最新注册</dt>
+                    <dd>2016-3-12 12:09:12 <code>kevin</code></dd>
+                    <dd>2016-3-12 12:09:12 <code>kevin</code></dd>
+                </dl>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">会员优惠</h3>
+                </div>
+                <div class="panel-body">
+                    <p>充<code>500</code>元，<code>80</code>折</p>
+                    <p>充<code>300</code>元，<code>85</code>折</p>
+                    <p>充<code>200</code>元，<code>90</code>折</p>
+                    <p>充<code>100</code>元，<code>95</code>折</p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">订票流程</h3>
+                </div>
+                <div class="panel-body">
+                    <ol>
+                        <li>在线选座 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 加入购物车</li>
+                        <li>查看购物车 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 下单</li>
+                        <li>确认订单 &nbsp;<span class="glyphicon glyphicon-arrow-right"></span> 完成</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 " >
+            <div class="main" ng-controller="cartCtrl">
+                <div>
+                    <button type="button" class="btn btn-success">
+                        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> 订单详情
+                    </button>
+                </div>
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="text-center footer-info">
+        <h3>Write the Code，Change the World</h3>
+    </div>
+</footer>
+<script src="../static/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="../static/js/angular.js"></script>
+<script src="../static/js/angular-route.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+<script>
+    angular.module('myapp',['ngRoute'])
+            .config(function($routeProvider){
+                $routeProvider
+                        .when('/',{
+                            template:"\
+                                    <table class='table text-center address-table' style='margin-top:40px;'>\
+                                        <tr class='main-cart success'>\
+                                            <td>\
+                                                收货人：\
+                                            </td>\
+                                            <td>\
+                                                <%=username%>\
+                                            </td>\
+                                            <td></td>\
+                                        </tr>\
+                                        <tr class='main-cart success'>\
+                                            <td>\
+                                                手机号：\
+                                            </td>\
+                                            <td><%=tel%></td>\
+                                            <td></td>\
+                                        </tr>\
+                                        <tr class='main-cart' ng-repeat='product in products' >\
+                                         <td>\
+                                            <img ng-src='./static/images/films/{{product.item.moviePic}}' alt='影片' title='佳片有约' class='img img-thumbnail orderPic'>\
+                                            </td>\
+                                            <td><blockquote>\
+                                                <kbd>{{product.item.movieName}}</kbd>\
+                                                <footer>{{product.item.movieInfo}}</footer>\
+                                                </blockquote>\
+                                            </td>\
+                                            <td ><button class='btn btn-default'>{{product.item.moviePrice |currency:'￥'}} x {{product.num}}</button></td>\
+                                        </tr>\
+                                        <tr class='main-cart'>\
+                                            <td style='width:130px;'>共计<kbd class='productNum'><%=num%></kbd>件商品</td>\
+                                            <td>总金额&nbsp;&nbsp;&nbsp;<kbd class='productNum'>{{totalPrice |currency:'￥'}}</kbd></td>\
+                                            <td>实付金额</td>\
+                                            <td><kbd class='productNum'>{{totalPrice*discount/100 |currency:'￥'}}</kbd></td>\
+                                        </tr>\
+                                    <tr class='main-cart'>\
+                                        <td></td>\
+                                        <td style='padding-top:30px;'>\
+                                        <form class='form-horizontal' role='form'  name='order' method='POST' action=''>\
+                                                <div class='form-group'>\
+                                                    <input type='hidden' class='form-control' id='orderPerson' name='orderPerson' value='<%=username%>'>\
+                                                    <input type='hidden' class='form-control' id='orderTel' name='orderTel' value='<%=tel%>'>\
+                                                    <input type='hidden' class='form-control' id='orderPrice' name='orderPrice' value={{totalPrice*discount/100}}>\
+                                                    <input type='hidden' class='form-control' id='orderDetail' name='orderDetail' value={{orderData}}>\
+                                                    <button type='submit' class='btn btn-default btn-lg'>确认下单</button>\
+                                                </div>\
+                                            </form>\
+                                        </td>\
+                                    </tr>\
+                                     </table>\
+                "
+                        })
+            })
+            .controller('cartCtrl',function($scope,$http){
+                $http.get('/cartsData').success(function(result){
+                    $scope.orderData=result;
+                    $scope.products=result.products;
+                    $scope.totalPrice=result.totalPrice;
+                });
+                $scope.discount=95;
+            })
+
+
+</script>
+</body>
+</html>

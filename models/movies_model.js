@@ -13,4 +13,4 @@ var MovieSchema=new Schema({
     movieStar:Number,
     moviePic:String
 });
-mongoose.model('Movie',MovieSchema);
+module.exports =mongoose.model('Movie',MovieSchema);
